@@ -17,4 +17,5 @@ for filename in os.listdir(file_path):
         file_list.append(file_info)
 
 # Print the list of dictionaries
+print(file_list,)
 print(*file_list, sep="\n")
