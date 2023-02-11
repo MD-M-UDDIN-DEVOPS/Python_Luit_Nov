@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# Scenario: Your company needs to learn about the files located on various machines. 
+# You have been asked to build a script that extracts information such as the name and size about the files in the current working directory and stores it in a list of dictionaries.
+
+
 import os
 
 # Get the list of files in the current working directory
