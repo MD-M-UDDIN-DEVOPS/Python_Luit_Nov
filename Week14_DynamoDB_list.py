@@ -1,4 +1,3 @@
-
 import boto3
 
 # Create a DynamoDB resource
@@ -61,3 +60,37 @@ for movie in movies:
 response = table.scan()
 items = response['Items']
 print("\n".join([str(item) for item in items]))
+
+
+# Query the table and remove an item
+table.delete_item(
+    Key={
+        'title': 'Pushpa'
+    }
+)
+
+# Create a new table for games
+new_table_name = 'Games'
+new_table = dynamodb.create_table(
+    TableName=new_table_name,
+    KeySchema=[
+        {
+            'AttributeName': 'title',
+            'KeyType': 'HASH'
+        }
+    ],
+    AttributeDefinitions=[
+        {
+            'AttributeName': 'title',
+            'AttributeType': 'S'
+        }
+    ],
+    ProvisionedThroughput={
+        'ReadCapacityUnits': 5,
+        'WriteCapacityUnits': 5
+    }
+)
+
+# Wait for the new table to be created
+new_table.meta
+
